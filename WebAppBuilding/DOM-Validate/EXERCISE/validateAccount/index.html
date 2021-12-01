@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validate account</title>
+    <style>
+        .error{
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Validate account</h1>
+    <input type="text" id="account" minlength="6" placeholder="Enter account">
+    <br> <br>
+    <input type="button" value="Check" id="btn">
+    <hr> <br>
+    <p>123abc_ </p>
+    <p class="error">_abc1</p>
+    <p class="error">aefg</p>
+
+    <script>
+        let account = document.getElementById('account');
+        let btn = document.getElementById('btn');
+
+        btn.onclick = () => {
+            let accountInput = account.value;
+            if (is_account(accountInput)) {
+                console.log('This is valid account');
+            } else {
+                alert('This is invalid account');
+            }
+        };
+
+        function is_account(str) {
+            let regexp = /^[_a-z0-9]{6,}$/;
+            return regexp.test(str)
+            // return str.match(regexp);
+        }
+    </script>
+</body>
+
+</html>
