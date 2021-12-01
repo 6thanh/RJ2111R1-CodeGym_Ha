@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kiểm tra Mã quốc gia nước Mỹ</title>
+</head>
+<body>
+    <input type="text" id="zipCode" placeholder="Enter zip code">
+    <br> <br>
+    <input type="button" value="Check" id="btn">
+    <hr> <br>
+    <p>03201-2150</p>
+    <p>7892</p>
+
+    <script>
+        let zipCode = document.getElementById('zipCode');
+        let btn = document.getElementById('btn');
+
+        btn.addEventListener('click', function(){
+            let zipCodeInput = zipCode.value;
+            if(is_usZipCode(zipCodeInput)){
+                console.log('This is the country code for the United States of America');
+            } else{
+                alert('This is NOT the country code for the United States of America');
+            }
+        });
+        function is_usZipCode(str) {
+            let regexp = /^[0-9]{5}(?:-[0-9]{4})?$/;
+            // return regexp.test(str)
+            return str.match(regexp);
+        }
+    </script>
+</body>
+</html>
