@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Spread Attributes</title>
+</head>
+
+<body>
+    <h1>Sử dụng Spread Attributes trong ES6</h1>
+    <hr>
+    <div class="ex1">
+        <h2>Bài 1</h2>
+        <input type="text" id="string">
+        <input type="button" value="Count" id="btnOne">
+    </div>
+    <hr>
+    <div class="ex2">
+        <h2>Bài 2</h2>
+        <input type="text" id="stringOne" placeholder="One">
+        <input type="text" id="stringTwo" placeholder="Two">
+        <input type="button" value="Add" id="btnTwo">
+    </div>
+    <hr>
+    <div class="ex3">
+        <h2>Bài 3</h2>
+        <input type="text" id="stringThree" placeholder="Three">
+        <input type="button" value="Copy" id="btnThree">
+        
+        <input type="text" id="stringFour" placeholder="copy of Three">
+    </div>
+    <hr>
+    <script>
+        { // bài 1
+            let string = document.getElementById('string');
+            let btnOne = document.getElementById('btnOne');
+
+            btnOne.onclick = () => {
+                let stringInput = string.value;
+                console.log(`Số từ trong chuỗi: ${stringInput} - là ${stringInput.length}`);
+                console.log('Kiểu ký tự của: ' + stringInput + ' - là ' + typeof (stringInput));
+
+                let char = [...stringInput];
+                console.log(`Kiểu ký tự của: ${char} - là: ${typeof(char)} (có ${char.length} ký tự)`);
+            }
+        }
+
+        { // bài 2
+            let stringOne = document.getElementById('stringOne');
+            let stringTwo = document.getElementById('stringTwo');
+            let btnThree = document.getElementById('btnThree');
+            btnTwo.addEventListener('click', () => {
+                let arrayOne = [...stringOne.value];
+                let arrayTwo = [...stringTwo.value];
+                console.log(arrayOne.concat(arrayTwo));
+
+                let blog1Subscribers = stringOne.value;
+                let blog2Subscribers = stringTwo.value;
+                console.log([...blog1Subscribers, ...blog2Subscribers]);
+            })
+        }
+
+        { //bài 3
+            let stringThree = document.getElementById('stringThree');
+            let stringFour = document.getElementById('stringFour');
+            let btnThree = document.getElementById('btnThree');
+            btnThree.addEventListener('click', function(){
+                stringFour.value = stringThree.value;
+            });
+        }
+    </script>
+</body>
+
+</html>
