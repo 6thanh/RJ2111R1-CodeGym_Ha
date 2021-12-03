@@ -28,7 +28,7 @@
         <h2>Bài 3</h2>
         <input type="text" id="stringThree" placeholder="Three">
         <input type="button" value="Copy" id="btnThree">
-        
+
         <input type="text" id="stringFour" placeholder="copy of Three">
     </div>
     <hr>
@@ -56,8 +56,10 @@
                 let arrayTwo = [...stringTwo.value];
                 console.log(arrayOne.concat(arrayTwo));
 
-                let blog1Subscribers = stringOne.value;
-                let blog2Subscribers = stringTwo.value;
+                // let blog1Subscribers = stringOne.value;
+                // let blog2Subscribers = stringTwo.value;
+                let blog1Subscribers = ['billy@example.com', 'sally@gmail.com'];
+                let blog2Subscribers = ['timmy@gmail.com', 'tammy@example.com', 'tommy@gmail.com'];
                 console.log([...blog1Subscribers, ...blog2Subscribers]);
             })
         }
@@ -66,7 +68,7 @@
             let stringThree = document.getElementById('stringThree');
             let stringFour = document.getElementById('stringFour');
             let btnThree = document.getElementById('btnThree');
-            btnThree.addEventListener('click', function(){
+            btnThree.addEventListener('click', function () {
                 stringFour.value = stringThree.value;
             });
         }
