@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Set</title>
+</head>
+<body>
+    <label for="add"></label><input type="text" id="add" placeholder="Add">
+    <input type="button" value="Add" id="btnAdd">
+    <br>
+    <label for="check"></label><input type="text" id="check" placeholder="Check">
+    <input type="button" value="Check" id="btnCheck">
+    <br>
+    <label for="delete"></label><input type="text" id="delete" placeholder="Delete">
+    <input type="button" value="Delete" id="btnDelete">
+    <br> <br>
+    <input type="button" value="List" id="btnList">
+
+    <script>
+        let add = document.getElementById('add');
+        let btnAdd = document.getElementById('btnAdd');
+        let check = document.getElementById('check');
+        let btnCheck = document.getElementById('btnCheck');
+        let deleteAnimal = document.getElementById('delete');
+        let btnDelete = document.getElementById('btnDelete');
+        let btnList = document.getElementById('btnList');
+        const animal = ['monkey','tiger'];
+        const animals = new Set(animal);
+        btnAdd.addEventListener('click', function(){
+
+        })
+        animals.add('bird');
+        if(!animals.has('elephan')){
+            animals.add('elephan')
+        }
+        console.log(animals)
+    </script>
+</body>
+</html>

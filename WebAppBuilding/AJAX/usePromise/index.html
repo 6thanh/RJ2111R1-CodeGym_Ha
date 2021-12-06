@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Promise</title>
+</head>
+
+<body>
+    <script>
+        { //bai 1
+            const count = true;
+
+            let countValue1 = new Promise(function (resolve, reject) {
+                if (count) {
+                    resolve("There is a count value.");
+                } else {
+                    reject("There is no count value");
+                }
+            });
+            console.log(countValue1);
+            console.log('End ex 1')
+        }
+
+        {//bai 2
+            // returns a promise
+            let countValue2 = new Promise(function (resolve, reject) {
+                resolve("Promise resolved");
+            });
+
+            // executes when promise is resolved successfully
+            countValue2
+                .then(function successValue(result) {
+                    console.log(result);
+                })
+
+                .then(function successValue1() {
+                    console.log("You can call multiple functions this way. - End ex 2");
+                });
+        }
+
+        {//bai3
+            // returns a promise
+            let countValue = new Promise(function (resolve, reject) {
+                reject('Promise rejected');
+            });
+
+            // executes when promise is resolved successfully
+            countValue
+                .then(function successValue(result) {
+                    console.log(result);
+                },
+                )
+
+                // executes if there is an error
+                .catch(
+                    function errorValue(result) {
+                        console.log(result);
+                    }
+                );
+        }
+    </script>
+</body>
+
+</html>

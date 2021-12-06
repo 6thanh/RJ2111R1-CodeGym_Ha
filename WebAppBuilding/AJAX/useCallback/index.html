@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Callback</title>
+</head>
+
+<body>
+    <script>
+        { //bai 1
+            function greet1(name, callback) {
+                console.log('Hi' + ' ' + name);
+                callback();
+            }
+
+            // callback function
+            function callMe() {
+                console.log('I am callback function');
+            }
+
+            // passing function as an argument
+            greet1('Peter', callMe);
+            console.log("End exercise 1")
+        }
+
+        { //bai 2
+            function greet2(){
+                console.log('Hello world')
+                console.log('End exercise 2');
+            }
+            function sayName1(name){
+                console.log('Hi' + " " + name);
+            }
+
+            setTimeout(greet2,500);
+            sayName1('Jonh');
+            
+        }
+
+        {// bai3
+            function greet(name, myFunction){
+                console.log('Hello world');
+                myFunction(name);
+            }
+
+            function sayName(name){
+                console.log('Hi' + " " + name);
+            }
+
+            setTimeout(greet,2000,'Mark', sayName);
+        }
+    </script>
+</body>
+
+</html>
