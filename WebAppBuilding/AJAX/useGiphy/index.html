@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Giphy</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+        .container {
+            width: 80vw;
+            height: 100vh;
+            margin: auto;
+            background: black;
+        }
+
+        header {
+            width: 60%;
+            margin: auto;
+            padding-top: 1em;
+        }
+
+        input:focus {
+            outline: none;
+        }
+
+        #textInput {
+            width: 150px;
+            height: 40px;
+            border-radius: 5px;
+            padding-left: 0.75em;
+        }
+
+        #search {
+            width: 100px;
+            height: 40px;
+            background: grey;
+            border-radius: 5px;
+            border: 1px groove burlywood;
+            color: white;
+        }
+
+        #search:hover {
+            background: black;
+            border: 1px solid blue;
+        }
+
+        #remove {
+            width: 120px;
+            height: 40px;
+            background: rgba(245, 3, 3, 0.918);
+            border-radius: 5px;
+            color: white;
+        }
+
+        #remove:hover {
+            background: red;
+        }
+
+        section {
+            margin-top: 2.5em;
+            min-height: 4em;
+            line-height: 4em;
+            position: relative;
+        }
+
+        img {
+            width: 28%;
+            height: 15em;
+            border: 0.1em solid gold;
+            margin: 1em;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Use Giphy</h1>
+    <div class="container">
+        <header>
+            <input type="text" id="textInput" placeholder="Enter a search term">
+            <input type="button" id="search" value="Search Giphy">
+            <input type="button" id="remove" value="Remove Images">
+        </header>
+        <section>
+            <div id="video"></div>
+        </section>
+
+        <script>
+            let textInput = document.getElementById('textInput');
+            let search = document.getElementById('search');
+            let remove = document.getElementById('remove');
+            const APIKey = "OaI8Scqh6gxKwYuB0TXRiZxeyTICIFcX";
+            let video = document.getElementById('video');
+
+            search.addEventListener('click', () => {
+                if (textInput.value == '') {
+                    alert("Please enter a search term!")
+                } else {
+                    let countImg = document.getElementsByTagName('img');
+                    if (countImg.length == 3) {
+                        alert("Please remove images!");
+                        textInput.value = '';
+                    }
+                    axios.get(`http://api.giphy.com/v1/gifs/search?q=${textInput.value}&api_key=${APIKey}`)
+                        .then(function (response) {
+                            textInput.value = '';
+                            let aUrl = response.data.data[0].embed_url; //đưa link này vào thẻ a
+                            let imgUrl = response.data.data[0].images?.original?.url; //đưa link này vào thẻ img
+                            video.innerHTML += `<a href="${aUrl}"><img src="${imgUrl}"></a>`;
+
+                            if (countImg.length == 2) {
+                                countImg[1].style.width = "34%"; // ảnh thứ hai lớn hơn
+                                countImg[1].style.position ='absolute';
+                                countImg[1].style.top ='-0.5em';
+                                countImg[1].style.height ='20em';
+                            }
+                            if (countImg.length == 3) {
+                                countImg[2].style.float ='right';
+                            }
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                }
+            });
+
+            remove.addEventListener('click', () => {
+                video.innerHTML = '';
+            })
+
+        </script>
+    </div>
+</body>
+
+</html>
