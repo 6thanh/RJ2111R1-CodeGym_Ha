@@ -41,14 +41,23 @@
     <script>
         $(function () {
             const APIKey = '4b0201b530400e6c7feca7305cdf61f2';
+            $('#address').keyup((e) => {
+                if (e.key == "Enter") {
+                    checkInput();
+                }
+            });
 
             $('#search').click(function () {
+                checkInput();
+            });
+
+            function checkInput(){
                 if ($('#address').val() != '') {
                     search()
                 } else {
                     alert('Please enter city!');
                 }
-            });
+            }
 
             async function search() {
                 try {
@@ -63,11 +72,11 @@
                     $('.city').text(`Temperature at ${name}:`);
                     $('.icon').attr('src', `https://openweathermap.org/img/wn/${icon}.png`);
                     $('.description').text(description);
-                    $('.temp').text(`${temp} °C`);
+                    $('.temp').text(`${temp-273.15} °C`);
                     $('.humidity').text(`Humidity: ${humidity}%`);
                     $('.wind').text(`Wind speed: ${speed} km/h`);
                     $('#cityImg').removeClass("loading");
-                    // $('body').style.background = `url('https://source.unsplash.com/1600x900/?${name}`;
+                    // $(body).style.background = `url('https://source.unsplash.com/1600x900/?${name}`;
 
                     if (response.message === 'city not found') {
                         alert('Not found');
@@ -78,11 +87,7 @@
                 }
             }
 
-            $('#address').keyup((e) => {
-                if (e.key == "Enter") {
-                    search();
-                }
-            });
+            
         })
 
     </script>
