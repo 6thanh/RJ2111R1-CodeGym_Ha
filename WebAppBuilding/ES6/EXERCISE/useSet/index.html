@@ -35,7 +35,8 @@
         const animals = new Set(animal);
 
         btnAdd.addEventListener('click', function () {
-            let newAnimal = add.Input.value;
+            let newAnimal = addInput.value;
+            addInput.value = '';
             if(animals.has(newAnimal)){
                 alert(`Animals ${newAnimal} already on the list`);
             } else{
@@ -46,6 +47,7 @@
 
         btnCheck.addEventListener('click',()=>{
             let animalInput = checkInput.value;
+            checkInput.value = '';
             if(animals.has(animalInput)){
                 alert(`Animals ${animalInput} already on the list`);
             } else{
@@ -55,18 +57,21 @@
 
         btnDelete.addEventListener('click',()=>{
             let deleteAnimal = deleteInput.value;
+            deleteInput.value = '';
             if(animals.has(deleteAnimal)){
                 animals.delete(deleteAnimal);
                 result.innerHTML = 'Delete successful';
             } else{
-                alert(`Animals ${animalInput} NOT on the list`);
+                alert(`Animals ${deleteAnimal} NOT on the list`);
             }
         });
 
-        // animals.add('bird');
-        // if(!animals.has('elephan')){
-        //     animals.add('elephan')
-        // }
+        btnList.addEventListener('click',()=>{
+            result.innerHTML = 'Animal list: <br>';
+            for(let name of animals){
+                result.innerHTML += '- ' + name +'<br>' ;
+            }           
+        })
         console.log(animals)
     </script>
 </body>
