@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Static</title>
+</head>
+
+<body>
+
+    <script>
+        class Triple {
+            setName(name){
+                this.customName = name;
+            }
+            getName(){
+                return this.customName;
+            }
+            static description = 'I triple any number you provide';
+            static calculate(n = 1) {
+                return n * 3;
+            }
+        }
+        class Square extends Triple {
+            // constructor(){}
+            static longDescription;
+            static description = 'I square the triple of any number you provide';
+            static calculate(n) {
+                return super.calculate(n) * super.calculate(n);
+            }
+        }
+        console.log(Triple.customName);
+        console.log(Triple.description)
+
+        let square = new Square();
+        console.log(Square.calculate(5));
+        // console.log(square.calculate(5));
+        console.log(square.description)
+        square.setName('hai');
+        console.log(square.getName())
+    </script>
+</body>
+
+</html>
