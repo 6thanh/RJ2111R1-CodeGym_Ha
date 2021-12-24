@@ -172,6 +172,8 @@ const formSignUp =
   </form>
 </div>
 </div>
+
+
 ReactDOM.render(
   formSignUp,
     document.getElementById('root')
